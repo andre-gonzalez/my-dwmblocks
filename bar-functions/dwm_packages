@@ -2,7 +2,7 @@
 
 cupd=$(checkupdates | wc -l)
 if [ "$cupd" = 0 ]; then
-		exit
+		printf ""
 else
 		printf " %s\n" "$cupd"
 fi
