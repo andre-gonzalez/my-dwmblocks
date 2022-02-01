@@ -1,0 +1,8 @@
+#!/bin/sh
+
+cupd=$(checkupdates | wc -l)
+if [ "$cupd" = 0 ]; then
+		exit
+else
+		printf " %s\n" "$cupd"
+fi
