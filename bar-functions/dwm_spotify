@@ -29,7 +29,7 @@ dwm_spotify () {
             else
                 STATUS="▶ "
             fi
-            
+
             if [ "$SHUFFLE" = "On" ]; then
                 SHUFFLE=" 咽"
             else
@@ -37,9 +37,9 @@ dwm_spotify () {
             fi
         else
             if [ "$STATUS" = "Playing" ]; then
-                STATUS="▶ "
-            else
                 STATUS=" "
+            else
+                STATUS="▶ "
             fi
 
             if [ "$SHUFFLE" = "On" ]; then
@@ -48,7 +48,7 @@ dwm_spotify () {
                 SHUFFLE=""
             fi
         fi
-        
+
         if [ "$PLAYER" = "spotify" ]; then
             printf "%s%s %s - %s " "$STATUS" "$ARTIST" "$TRACK"
             printf "%0d:%02d" $((DURATION%3600/60)) $((DURATION%60))
