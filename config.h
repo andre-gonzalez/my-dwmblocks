@@ -7,9 +7,9 @@ static const Block blocks[] = {
 	{"",	"dwm_connman", 5, 0},
 	{"",	"dwm_resources", 5, 0},
 	{"",	"dwm_battery", 600, 0},
-	{"",	"dwm_backlight", 5, 0},
-	{"",	"dwm_pulse", 3, 0},
-	{"",	"dwm_bluetooth", 5, 0},
+	{"",	"dwm_backlight", 0, 11},
+	{"",	"dwm_pulse", 0, 10},
+	{"",	"dwm_bluetooth", 60, 12},
 	{"",	"dwm_date", 30, 0},
 };
 
