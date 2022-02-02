@@ -9,9 +9,9 @@
 dwm_connman () {
     printf "%s"
     if [ "$IDENTIFIER" = "unicode" ]; then
-        printf " "
+        printf ""
     else
-        printf "  "
+        printf " "
     fi
 
     # get the connmanctl service name
