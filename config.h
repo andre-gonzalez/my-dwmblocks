@@ -2,15 +2,15 @@
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
 	/* {"⌨", "sb-kbselect", 0, 30}, */
-	{"",	"dwm_packages",	14400,	0},
-	{"",	"dwm_spotify", 3, 0},
-	{"",	"dwm_connman", 5, 0},
-	{"",	"dwm_resources", 5, 0},
-	{"",	"dwm_battery", 600, 0},
+	{"",	"dwm_packages",	14400, 13},
+	{"",	"dwm_spotify", 3,  0},
+	{"",	"dwm_connman", 5,  0},
+	{"",	"dwm_resources", 5,  0},
+	{"",	"dwm_battery", 600,  0},
 	{"",	"dwm_backlight", 0, 11},
 	{"",	"dwm_pulse", 0, 10},
 	{"",	"dwm_bluetooth", 60, 12},
-	{"",	"dwm_date", 30, 0},
+	{"",	"dwm_date", 30,  0},
 };
 
 //Sets delimiter between status commands. NULL character ('\0') means no delimiter.

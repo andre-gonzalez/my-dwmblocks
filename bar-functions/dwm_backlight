@@ -10,7 +10,7 @@ dwm_backlight () {
     actual=$(brightnessctl g)
     max=$(brightnessctl m)
     bright=$((actual * 100 / max))
-    printf " %i%%\n" "$bright"
+    printf " %i%%\n" "$bright"
 }
 
 dwm_backlight

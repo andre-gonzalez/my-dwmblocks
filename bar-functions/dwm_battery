@@ -11,15 +11,18 @@ dwm_battery () {
 	BATTERY=$(bluetooth-headset-battery-level $(bluetoothctl info | awk '/^Device/ {print $2}'))
     if [ "$IDENTIFIER" = "unicode" ]; then
         if [ "$STATUS" = "Charging" ]; then
-            printf " %s%%%s\n" "$CHARGE" "+"
+            printf " %s%%s\n" "$CHARGE" "+"
 		elif [ "$STATUS" = "Full" ] || [ "$STATUS" = "Unknown" ]; then
-			printf " %s%%\n" "$CHARGE"
+			printf " %s%\n" "$CHARGE"
         else
-            printf " %s%%%s\n" "$CHARGE" "-"
+            printf " %s%%s\n" "$CHARGE" "-"
         fi
     else
         printf " %s%%\n" "$CHARGE"
     fi
+#    if [ $CHARGE -le 95 ]; then
+#		notify-send -u critical "Bateria em 5%"
+#    fi
 }
 
 dwm_battery
