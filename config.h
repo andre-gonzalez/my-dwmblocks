@@ -6,7 +6,7 @@ static const Block blocks[] = {
 	{"",	"dwm_spotify", 3,  0},
 	{"",	"dwm_connman", 5,  0},
 	{"",	"dwm_resources", 5,  0},
-	{"",	"dwm_battery", 600,  0},
+	{"",	"dwm_battery", 300,  0},
 	{"",	"dwm_backlight", 0, 11},
 	{"",	"dwm_pulse", 0, 10},
 	{"",	"dwm_bluetooth", 60, 12},
