@@ -1,35 +1,18 @@
 #!/bin/sh
 
-# A dwm_bar function to read the battery level and status
-# Joe Standring <git@joestandring.com>
-# GNU GPLv3
+# Change BAT1 to whatever your battery is identified as. Typically BAT0 or BAT1
+CHARGE=$(cat /sys/class/power_supply/BAT1/capacity)
+STATUS=$(cat /sys/class/power_supply/BAT1/status)
 
-dwm_battery () {
-    # Change BAT1 to whatever your battery is identified as. Typically BAT0 or BAT1
-    CHARGE=$(cat /sys/class/power_supply/BAT1/capacity)
-    STATUS=$(cat /sys/class/power_supply/BAT1/status)
-	BATTERY=$(bluetooth-headset-battery-level $(bluetoothctl info | awk '/^Device/ {print $2}'))
-    if [ "$IDENTIFIER" = "unicode" ]; then
-        if [ "$STATUS" = "Charging" ]; then
-            printf " %s%% %s\n" "$CHARGE" "+"
-		elif [ "$STATUS" = "Full" ] || [ "$STATUS" = "Unknown" ]; then
-			printf " %s%% %s\n" "$CHARGE"
-        else
-            printf " %s%% %s\n" "$CHARGE" "-"
+if [ "$STATUS" = "Charging" ]; then
+	printf " %s%% %s\n" "$CHARGE" "+"
+elif [ "$STATUS" = "Full" ] || [ "$STATUS" = "Unknown" ]; then
+	printf " %s%% %s\n" "$CHARGE"
+else
+	printf " %s%% %s\n" "$CHARGE" "-"
 
-		    if [ $((CHARGE%5)) -ne "0" -a "$CHARGE" -le "30" ]; then
-			  	printf "Bateria em %s%%" "$CHARGE" | dmenu -sb "red" -sf "black"
-				notify-send -u critical "Bateria em ${CHARGE}%"
-		    fi
-        fi
-    else
-        printf " %s%%\n" "$CHARGE"
-
-		if [ $((CHARGE%5)) -ne "0" -a "$CHARGE" -le "30" ]; then
-				printf "Bateria em %s%%" "$CHARGE" | dmenu -sb "red" -sf "black"
-				notify-send -u critical "Bateria em ${CHARGE}%"
-		fi
-    fi
-}
-
-dwm_battery
+	if [ $((CHARGE%5)) -ne "0" -a "$CHARGE" -le "30" ]; then
+		printf "Bateria em %s%%" "$CHARGE" | dmenu -sb "red" -sf "black"
+		notify-send -u critical "Bateria em ${CHARGE}%"
+	fi
+fi
