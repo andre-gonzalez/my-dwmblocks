@@ -4,7 +4,7 @@ static const Block blocks[] = {
 	/* {"⌨", "sb-kbselect", 0, 30}, */
 	{"",	"dwm_packages",	14400, 13},
 	{"",	"dwm_spotify", 3,  0},
-	{"",	"dwm_connman", 5,  0},
+	{"",	"dwm_systemd_networkd", 5,  0},
 	{"",	"dwm_resources", 5,  0},
 	{"",	"dwm_battery", 300,  0},
 	{"",	"dwm_backlight", 0, 11},
