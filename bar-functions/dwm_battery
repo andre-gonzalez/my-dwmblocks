@@ -7,7 +7,7 @@ STATUS=$(cat /sys/class/power_supply/BAT1/status)
 if [ "$STATUS" = "Charging" ]; then
 	printf " %s%% %s\n" "$CHARGE" "+"
 elif [ "$STATUS" = "Full" ] || [ "$STATUS" = "Unknown" ]; then
-	printf " %s%% %s\n" "$CHARGE"
+	printf " %s%%\n" "$CHARGE"
 else
 	printf " %s%% %s\n" "$CHARGE" "-"
 
