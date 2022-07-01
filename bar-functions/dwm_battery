@@ -11,7 +11,7 @@ elif [ "$STATUS" = "Full" ] || [ "$STATUS" = "Unknown" ]; then
 else
 	printf " %s%% %s\n" "$CHARGE" "-"
 
-	if [ $((CHARGE%5)) -ne "0" -a "$CHARGE" -le "30" ]; then
+	if [ "$CHARGE" -le "30" ]; then
 		printf "Bateria em %s%%" "$CHARGE" | dmenu -sb "red" -sf "black"
 		notify-send -u critical "Bateria em ${CHARGE}%"
 	fi
