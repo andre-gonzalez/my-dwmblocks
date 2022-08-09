@@ -9,13 +9,14 @@
 
 # Change the value of CURRENCY to match your currency code
 dwm_currency() {
-	CURRENCY=EUR
+	CURRENCY1=MXN
+	CURRENCY2=BRL
 
 	printf "%s" "$SEP1"
 	if [ "$IDENTIFIER" = "unicode" ]; then
-		printf "%s" "$(curl -s rate.sx/1$CURRENCY)"
+		printf "%s" "  R\$$(curl -s $CURRENCY1rate.sx/1$CURRENCY2)"
 	else
-		printf "%s %.5s" "$CURRENCY" "$(curl -s rate.sx/1$CURRENCY)"
+		printf "%s %.5s" "  R\$" "$(curl -s $CURRENCY1.rate.sx/1$CURRENCY2)"
 	fi
 	printf "%s\n" "$SEP2"
 }
