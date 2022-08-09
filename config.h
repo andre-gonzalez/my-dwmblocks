@@ -11,7 +11,7 @@ static const Block blocks[] = {
 	{"",	"dwm_backlight", 0, 11},
 	{"",	"dwm_pulse", 0, 10},
 	{"",	"dwm_bluetooth", 60, 12},
-	{"",	"dwm_date", 30,  0},
+	{"",	"dwm_date_brasil", 30,  0},
 	{"",	"dwm_countdown", 1,  0},
 };
 
