@@ -1,6 +1,6 @@
 #!/bin/sh
 
-interface=$(ip addr | awk '/state UP/ {gsub(":","");print $2}' | head -n 1)
+interface=$(ip addr | awk '/state UP/ {gsub(":","");print $2}' | grep -v 'virbr0' | head -n 1)
 status=$(iwctl station $interface show | grep State | grep -o 'connected\|disconnected')
 wired=$(ip -s link show enp2s0 | grep -c 'state UP')
 
