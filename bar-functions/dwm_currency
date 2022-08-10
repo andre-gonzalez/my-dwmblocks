@@ -14,7 +14,7 @@ dwm_currency() {
 
 	printf "%s" "$SEP1"
 	if [ "$IDENTIFIER" = "unicode" ]; then
-		printf "%s" "  R\$$(curl -s $CURRENCY1rate.sx/1$CURRENCY2)"
+		printf "%s" " R\$$(curl -s $CURRENCY1rate.sx/1$CURRENCY2)"
 	else
 		printf "%s %.5s" "  R\$" "$(curl -s $CURRENCY1.rate.sx/1$CURRENCY2)"
 	fi
