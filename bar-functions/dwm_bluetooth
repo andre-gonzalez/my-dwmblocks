@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/dash
 dwm_bluetooth () {
 		name=$(bluetoothctl info | grep 'Name' | cut -d : -f 2)
 		connected=$(bluetoothctl info | grep 'Connected:' | grep -o 'no\|yes')
