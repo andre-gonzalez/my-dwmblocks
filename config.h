@@ -14,6 +14,7 @@ static const Block blocks[] = {
 	{"",	"dwm_bluetooth", 60, 12},
 	{"",	"dwm_date", 30,  0},
 	{"",	"dwm_countdown", 1,  0},
+	{"",	"dwm_do_not_disturb", 0,  14},
 };
 
 //Sets delimiter between status commands. NULL character ('\0') means no delimiter.

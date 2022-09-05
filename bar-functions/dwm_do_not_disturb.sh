@@ -1,0 +1,17 @@
+#!/bin/sh
+
+disturb () {
+
+status="$(dunstctl is-paused)"
+
+if [ "$status" = "false" ]; then
+		echo 
+elif [ "$status" = "true" ]; then
+		echo 
+fi
+
+}
+
+disturb
+
+
