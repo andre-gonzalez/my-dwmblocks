@@ -28,6 +28,12 @@ dwm_resources () {
 		printf " %s/%s| %s| %s/%s" "$MEMUSED" "$MEMTOT" "$CPU" "$STOUSED" "$STOTOT"
 	fi
 	printf "%s\n"
+
+	TOTAL=$( echo $STOTOT | tr -dc '0-9')
+	USED=$( echo $STOUSED | tr -dc '0-9')
+	if [ $(( TOTAL - USED )) -lt 25 ]; then
+			notify-send "HD cheio"
+	fi
 }
 
 dwm_resources
