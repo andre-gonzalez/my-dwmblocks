@@ -2,7 +2,6 @@
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
 	/* {"⌨", "sb-kbselect", 0, 30}, */
-	{"",	"dwm_samba", 300, 0},
 	{"",	"dwm_ufw",	60, 0},
 	{"",	"dwm_currency",	14400, 0},
 	{"",	"dwm_weather",	14400, 0},
