@@ -4,7 +4,7 @@ static const Block blocks[] = {
 	/* {"⌨", "sb-kbselect", 0, 30}, */
 	{"",	"dwm_cron",	14400, 0},
 	{"",	"dwm_ufw",	60, 0},
-	{"",	"dwm_currency",	14400, 0},
+	/* {"",	"dwm_currency",	14400, 0}, */
 	{"",	"dwm_weather",	14400, 0},
 	{"",	"dwm_packages",	14400, 13},
 	{"",	"dwm_spotify", 3,  0},
