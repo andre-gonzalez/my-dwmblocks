@@ -12,7 +12,6 @@ else
 	printf " %s%% %s\n" "$CHARGE" "-"
 
 	if [ "$CHARGE" -le "30" ]; then
-		printf "Bateria em %s%%" "$CHARGE" | dmenu -sb "red" -sf "black"
 		notify-send -u critical "Bateria em ${CHARGE}%"
 	fi
 fi
