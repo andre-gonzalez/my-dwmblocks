@@ -24,13 +24,13 @@ dwm_spotify () {
         SHUFFLE=$(playerctl shuffle)
 
 			if [ "$STATUS" = "Playing" ]; then
-				STATUS=" "
+				STATUS=" "
 			else
 				STATUS="▶ "
 			fi
 
 			if [ "$SHUFFLE" = "On" ]; then
-				SHUFFLE=" 咽"
+				SHUFFLE="󰒟"
 			else
 				SHUFFLE=""
 			fi
