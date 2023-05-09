@@ -9,7 +9,7 @@ if [ "$status" = "connected" ]; then
 		strength=$(iw dev "$interface" link | awk '/signal/ {gsub("-",""); print $2}')
 		echo " ""$network" "$strength%"
 elif [ "$wired" = 1 ]; then
-		echo " Ethernet"
+		echo "󰈁 Ethernet"
 else
 		echo " OFFLINE"
 fi
