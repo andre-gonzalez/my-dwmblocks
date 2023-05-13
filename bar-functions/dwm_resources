@@ -9,7 +9,7 @@ df_check_location='/home'
 dwm_resources () {
 	# get all the infos first to avoid high resources usage
 	free_output=$(free -h | grep Mem)
-	df_output=$(df -h $df_check_location | tail -n 1)
+    filesystem=$(df -Th /home | awk 'FNR == 2{print $2}')
 	# Used and total memory
 	MEMUSED=$(echo $free_output | awk '{print $3}')
 	MEMTOT=$(echo $free_output | awk '{print $2}')
@@ -17,14 +17,21 @@ dwm_resources () {
 	CPU=$(top -bn1 | grep Cpu | awk '{print $2}')%
 	#CPU=$(sysctl -n hw.sensors.cpu0.temp0 | cut -d. -f1)
 	# Used and total storage in /home (rounded to 1024B)
-	STOUSED=$(echo $df_output | awk '{print $3}')
-	STOTOT=$(echo $df_output | awk '{print $2}')
+    if [ "$filesystem" = "btrfs" ]; then
+        df_output=$(btrfs fi df $df_check_location | head -n 1)
+    	STOUSED=$(echo $df_output | grep -o -P '(?<=used=)(.*)(?=.\d{2}GiB)')
+    	STOTOT=$(echo $df_output | grep -o -P '(?<=total=)(.*)(?=.\d{2}GiB, )')
+    else
+    	df_output=$(df -h $df_check_location | tail -n 1)
+    	STOUSED=$(echo $df_output | awk '{print $3}')
+    	STOTOT=$(echo $df_output | awk '{print $2}')
+    fi
 
 	printf "%s"
 	if [ "$IDENTIFIER" = "unicode" ]; then
 		printf " %s/%s| %s| %s/%s" "$MEMUSED" "$MEMTOT" "$CPU" "$STOUSED" "$STOTOT"
 	else
-		printf " %s/%s| %s| %s/%s" "$MEMUSED" "$MEMTOT" "$CPU" "$STOUSED" "$STOTOT"
+		printf " %s/%s| %s| %sG/%sG" "$MEMUSED" "$MEMTOT" "$CPU" "$STOUSED" "$STOTOT"
 	fi
 	printf "%s\n"
 
