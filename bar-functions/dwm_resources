@@ -19,7 +19,6 @@ dwm_resources () {
 	# Used and total storage in /home (rounded to 1024B)
 	STOUSED=$(echo $df_output | awk '{print $3}')
 	STOTOT=$(echo $df_output | awk '{print $2}')
-	STOPER=$(echo $df_output | awk '{print $5}')
 
 	printf "%s"
 	if [ "$IDENTIFIER" = "unicode" ]; then
