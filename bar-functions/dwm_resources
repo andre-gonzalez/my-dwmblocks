@@ -35,9 +35,7 @@ dwm_resources () {
 	fi
 	printf "%s\n"
 
-	TOTAL=$( echo $STOTOT | tr -dc '0-9')
-	USED=$( echo $STOUSED | tr -dc '0-9')
-	if [ $(( TOTAL - USED )) -lt 25 ]; then
+	if [ $(( STOTOT - STOUSED )) -lt 20 ]; then
 			notify-send "HD cheio"
 	fi
 }
