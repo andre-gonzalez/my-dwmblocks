@@ -35,7 +35,7 @@ dwm_resources () {
 	fi
 	printf "%s\n"
 
-	if [ $(( STOTOT - STOUSED )) -lt 20 ]; then
+	if [ $(( STOTOT - STOUSED )) -lt 15 ]; then
 			notify-send "HD cheio"
 	fi
 }
