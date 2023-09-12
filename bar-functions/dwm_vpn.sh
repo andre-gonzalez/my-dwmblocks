@@ -4,25 +4,15 @@
 # Joe Standring <git@joestandring.com>
 # GNU GPLv3
 
-# Dependencies: NetworkManager, NetworkManager-openvpn (for OpenVPN connections)
+# Dependencies: pritunl-client
 
 dwm_vpn () {
-    VPN=$(nmcli -a | grep 'VPN connection' | sed -e 's/\( VPN connection\)*$//g')
-    
-    if [ "$VPN" = "" ]; then
-        VPN=$(nmcli connection | grep 'wireguard' | sed 's/\s.*$//')
-    fi
+		ACTIVE=`pritunl-client list | grep -c 'Active'`
 
-    if [ "$VPN" != "" ]; then
-        printf "%s" "$SEP1"
-        if [ "$IDENTIFIER" = "unicode" ]; then
-            printf "🔒 %s" "$VPN"
-        else
-            printf "VPN %s" "$VPN"
-        fi
-        printf "%s\n" "$SEP2"
+		if [ "$ACTIVE" -ge 1 ]; then
+			IP=`pritunl-client list | grep -E -o "([0-9]{1,3}[\\.]){3}[0-9]{1,3}" | head -n 1`
+			printf "🔒 %s" "$IP"
     fi
 }
-
 
 dwm_vpn
