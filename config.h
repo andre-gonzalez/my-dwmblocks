@@ -1,18 +1,12 @@
 //Modify this file to change what commands output to your statusbar, and recompile using the make command.
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
-	/* {"⌨", "sb-kbselect", 0, 30}, */
-	{"",	"dwm_cron",	14400, 0},
 	{"",	"dwm_ufw",	60, 0},
-	/* {"",	"dwm_currency",	14400, 0}, */
 	{"",	"dwm_weather",	14400, 0},
 	{"",	"dwm_packages",	14400, 13},
 	{"",	"dwm_spotify", 3,  0},
 	{"",	"dwm_systemd_networkd", 5,  0},
-	{"",	"dwm_vpn", 5,  0},
 	{"",	"dwm_resources", 5,  0},
-	{"",	"dwm_battery", 300,  0},
-	{"",	"dwm_backlight", 0, 11},
 	{"",	"dwm_pulse", 0, 10},
 	{"",	"dwm_bluetooth", 60, 12},
 	{"",	"dwm_date", 30,  0},
