@@ -7,34 +7,32 @@
 df_check_location='/home'
 
 dwm_resources () {
-	# get all the infos first to avoid high resources usage
+	# Gather memory usage data
 	free_output=$(free -h | grep Mem)
-    filesystem=$(df -Th /home | awk 'FNR == 2{print $2}')
-	# Used and total memory
 	MEMUSED=$(echo $free_output | awk '{print $3}')
 	MEMTOT=$(echo $free_output | awk '{print $2}')
-	# CPU temperature
-	CPU=$(top -bn1 | grep Cpu | awk '{print $2}')%
-	#CPU=$(sysctl -n hw.sensors.cpu0.temp0 | cut -d. -f1)
+
+	# Gather CPU usage
+	CPU=$(top -bn1 | awk '/Cpu/ {print $2}')%
+
+	# Determine filesystem type and collect storage usage
+    filesystem=$(df -Th /home | awk 'FNR == 2{print $2}')
 	# Used and total storage in /home (rounded to 1024B)
     if [ "$filesystem" = "btrfs" ]; then
-        df_output=$(btrfs fi df $df_check_location | head -n 1)
-    	STOUSED=$(echo $df_output | grep -o -P '(?<=used=)(.*)(?=.\d{2}GiB)')
-    	STOTOT=$(echo $df_output | grep -o -P '(?<=total=)(.*)(?=.\d{2}GiB, )')
+		STOUSED=$(btrfs filesystem usage -H "$df_check_location" 2> /dev/null | awk '/   Used:/ {print int($2)}' | sed 's/[^0-9.]//g')
+		STOTOT=$(btrfs filesystem usage -H "$df_check_location" 2> /dev/null | awk '/Device size/ {print int($3)}' | sed 's/[^0-9.]//g')
     else
     	df_output=$(df -h $df_check_location | tail -n 1)
     	STOUSED=$(echo $df_output | awk '{print $3}')
     	STOTOT=$(echo $df_output | awk '{print $2}')
     fi
 
-	printf "%s"
-	if [ "$IDENTIFIER" = "unicode" ]; then
-		printf " %s/%s| %s| %s/%s" "$MEMUSED" "$MEMTOT" "$CPU" "$STOUSED" "$STOTOT"
-	else
-		printf " %s/%s| %s| %sG/%sG" "$MEMUSED" "$MEMTOT" "$CPU" "$STOUSED" "$STOTOT"
-	fi
-	printf "%s\n"
+	# Display the output
+	printf " %s/%s| %s| %sGB/%sGB\n" "$MEMUSED" "$MEMTOT" "$CPU" "$STOUSED" "$STOTOT"
 
+	# if [ $(( STOTOT - STOUSED )) -lt 15 ]; then
+	# 		notify-send "HD cheio"
+	# fi
 	if [ $(( STOTOT - STOUSED )) -lt 15 ]; then
 			notify-send "HD cheio"
 	fi
